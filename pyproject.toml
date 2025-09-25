@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cap-dcis-resection"
+version = "0.1.0"
+description = "Tools and utilities for working with CAP DCIS resection pathology prompts."
+readme = "README.md"
+authors = [{name = "CAP DCIS Team"}]
+requires-python = ">=3.9"
+dependencies = [
+    "transformers>=4.44",
+    "accelerate",
+    "torch",
+    "outlines",
+    "pydantic>=2.6",
+    "typer",
+    "uvicorn",
+    "fastapi",
+    "rich",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx"]
+
+[project.scripts]
+cap-dcis-batch = "cap_dcis_resection.runners.batch_cli:app"
+cap-dcis-serve = "cap_dcis_resection.runners.serve_api:create_app"
+
+[tool.setuptools]
+packages = ["cap_dcis_resection"]
